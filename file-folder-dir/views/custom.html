@@ -1,0 +1,16 @@
+<section ng-controller="fileFolderCtrl">
+    <h1>Folders</h1>
+    <label class="btn btn-default btn-file">
+        Browse <input class="form-control" type='file' multiple fileread="newFold" myoldfolders="folders"
+                      webkitdirectory directory   >
+    </label><hr>
+    <input type="text" class="form-control" ng-model="customSearch" placeholder="Type here to search.."><br>
+    <ul class='list-group'>
+        <li ng-repeat='fold in folders | filter: customSearch' class='list-group-item'>
+            <b>{{fold.name}}</b>
+            <ul class='list-group'>
+                <li ng-repeat='foldFile in fold.files.files | filter: customSearch' class='list-group-item'>{{foldFile.name}}</li>
+            </ul>
+        </li>
+    </ul>
+</section>
